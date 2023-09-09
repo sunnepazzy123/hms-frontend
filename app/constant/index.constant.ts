@@ -1,5 +1,7 @@
 export type genderType = "male" | "female";
 
+export type roleType = 'doctor'|'nurse'|'pharmarcist'|'admin'|'superAdmin'|'patient'
+
 export enum roleEnum {
   doctor = "doctor",
   nurse = "nurse",

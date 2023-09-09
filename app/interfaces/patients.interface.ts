@@ -1,4 +1,4 @@
-import { genderType, roleType} from "../constants/index.constant";
+import { genderType, roleType} from "@/app/constant/index.constant";
 
 export interface IPatients {
     firstName: string,

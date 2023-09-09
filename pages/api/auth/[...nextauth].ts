@@ -1,8 +1,8 @@
 import NextAuth, { AuthOptions } from "next-auth";
-import CredentialsProvider from "@/node_modules/next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import jwt from "jsonwebtoken";
 import { JWT } from "next-auth/jwt";
-import { useHmsStore } from "@/app/store";
+
 
 export const authOptions: AuthOptions = {
   session: {

@@ -1,8 +1,8 @@
 "use client";
 import { getPatients } from "@/app/store/api/patients";
 import { useQuery } from "@tanstack/react-query";
-import Datatable from "../datatable/Datatable";
-import Loader from "../Loader";
+import Datatable from "@/components/datatable/Datatable";
+import Loader from "@/components/Loader";
 import { patientColumns } from "../datatable/dataSource";
 
 const Patients = () => {

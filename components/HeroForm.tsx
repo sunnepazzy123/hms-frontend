@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 const HeroForm = () => {
   const router = useRouter();
-  const { register, control, handleSubmit } = useForm({
+  const { register, control, handleSubmit,} = useForm({
     defaultValues: {
       username: "",
       password: "",

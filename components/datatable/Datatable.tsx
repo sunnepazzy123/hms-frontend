@@ -6,6 +6,8 @@ import { Grid } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 import { renderCellFormatDate } from "./dataSource";
+import SimpleDialog from '@/components/Modal'
+import Profile from "../Profile";
 
 interface IDatatableProps {
   list: any;
@@ -87,15 +89,18 @@ const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
         getRowId={(row) => row._id}
         slots={{ toolbar: GridToolbar }}
       />
-      {/* {open && (
+      {open && (
         <SimpleDialog open={open} handleClose={setOpen}>
           {segmentName === "medical-records" ? (
-            <SingleMedicalRecord medicalRecord={row} />
+            // <Datatable list={row} column={medicalRecordColumns} name="Medical Records" />
+           <>ksffkjdfd</>
           ) : (
-            <SinglePatient profile={row} />
+            // <Datatable list={row} column={patientColumns} name="Patients" />
+            <Profile user={row} />
+
           )}
         </SimpleDialog>
-      )} */}
+      )}
     </div>
   );
 };

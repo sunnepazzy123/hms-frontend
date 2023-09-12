@@ -24,7 +24,7 @@ const MedicalRecords = () => {
   
       <h2 className="text-center text-xl text-black bold">{patient_id ? `${medicalRecord.card_no || ''} Patient Records` : 'Medical Records'}</h2>
       {isLoading && <Loader />}
-      <Datatable list={medicalRecords} name="Medical Records" column={medicalRecordColumns} />
+      <Datatable list={medicalRecords} name="Medical Records" column={medicalRecordColumns} routePath={patient_id} />
     </>
   );
 };

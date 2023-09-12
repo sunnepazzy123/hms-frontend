@@ -93,6 +93,13 @@
         border: 1px dotted rgba(220, 20, 60, 0.6);
         cursor: pointer;
         background: transparent;
+
+        &[disabled] {
+          background-color: #ccc; /* Change the background color to gray */
+          color: #666; /* Change the text color to a darker gray */
+          cursor: not-allowed; /* Change the cursor to indicate that it's not clickable */
+          border: none
+        }
       }
     }
   }

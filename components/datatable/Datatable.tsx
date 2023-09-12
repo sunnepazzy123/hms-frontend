@@ -16,23 +16,25 @@ interface IDatatableProps {
   list: any;
   column: any;
   name: string;
+  routePath: any;
   handlerOption?: (row: any, name: string) => void;
 }
 
-const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
+const Datatable = ({ list = [], column = [], name, routePath=null }: IDatatableProps) => {
   const segmentName = name === "Medical Records" ? "medical-records" : name;
+
   const [open, setOpen] = useState(false);
-  const [row, setRow] = useState();
   const router = useRouter();
+  const record = useHmsStore((state: any) => state.medicalRecord)
 
   const handler = (event: any, row: any) => {
     if(event.target.name === 'records') {
+      if(routePath) return
       const redirect = `/medical-records/patients/${row.patient_id._id}`;
       useHmsStore.setState({medicalRecord: row})
       router.push(redirect)
       return
     }
-    setRow(row);
     setOpen(true);
   };
 
@@ -61,6 +63,8 @@ const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
               className="recordButton"
               name="records"
               onClick={(e) => handler(e, params.row)}
+              disabled={routePath}
+
             >
               Records
             </button>
@@ -102,9 +106,9 @@ const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
       {open && (
         <SimpleDialog open={open} handleClose={setOpen}>
           {segmentName === "medical-records" ? (
-            <MedicalRecord medicalRecord={row} />
+            <MedicalRecord medicalRecord={record} />
           ) : (
-            <Profile user={row} />
+            <Profile user={record} />
           )}
         </SimpleDialog>
       )}

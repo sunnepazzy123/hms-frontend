@@ -30,3 +30,9 @@ body {
 /* .btn {
   @apply rounded-full;
 } */
+
+button[disabled] {
+  background-color: #ccc; /* Change the background color to gray */
+  color: #666; /* Change the text color to a darker gray */
+  cursor: not-allowed; /* Change the cursor to indicate that it's not clickable */
+}

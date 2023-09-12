@@ -16,7 +16,7 @@ interface IDatatableProps {
   list: any;
   column: any;
   name: string;
-  routePath: any;
+  routePath?: any;
   handlerOption?: (row: any, name: string) => void;
 }
 

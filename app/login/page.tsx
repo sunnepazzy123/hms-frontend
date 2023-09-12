@@ -1,4 +1,4 @@
-import HeroForm from '@/components/HeroForm'
+import HeroForm from '@/components/ui/HeroForm'
 import React from 'react'
 
 const Lgin = () => {

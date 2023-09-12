@@ -9,6 +9,7 @@ import { renderCellFormatDate } from "./dataSource";
 import SimpleDialog from "@/components/Modal";
 import Profile from "../Profile";
 import MedicalRecord from "../MedicalRecord";
+import { useRouter } from "next/navigation";
 
 interface IDatatableProps {
   list: any;
@@ -21,8 +22,14 @@ const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
   const segmentName = name === "Medical Records" ? "medical-records" : name;
   const [open, setOpen] = useState(false);
   const [row, setRow] = useState();
+  const router = useRouter();
 
   const handler = (event: any, row: any) => {
+    if(event.target.name === 'records') {
+      const redirect = `/medical-records/patients/${row.patient_id._id}`;
+      router.push(redirect)
+      return
+    }
     setRow(row);
     setOpen(true);
   };
@@ -49,9 +56,9 @@ const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
               View
             </button>
             <button
-              className="deleteButton"
+              className="recordButton"
               name="records"
-              onClick={(e) => handler(e, params.row._id)}
+              onClick={(e) => handler(e, params.row)}
             >
               Records
             </button>

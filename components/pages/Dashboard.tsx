@@ -5,9 +5,9 @@ import { getMedicalRecords } from "@/app/store/api/medical-records";
 import { getPatients } from "@/app/store/api/patients";
 import Datatable from "../datatable/Datatable";
 import { medicalRecordColumns } from "../datatable/dataSource";
-import Widget from "../Widget";
-import Alert from '../Alert'
-import Loader from '../Loader'
+import Widget from "../ui/Widget";
+import Alert from '../ui/Alert'
+import Loader from '../ui/Loader'
 import { dataDashboardWidget } from "../dataLinks";
 import Header from "../Header";
 

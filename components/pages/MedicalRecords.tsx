@@ -1,20 +1,26 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import Datatable from "../datatable/Datatable";
-import Loader from "../Loader";
+import Loader from "../ui/Loader";
 import { medicalRecordColumns } from "../datatable/dataSource";
 import { getMedicalRecords } from "@/app/store/api/medical-records";
+import { useParams } from 'next/navigation'
 
 const MedicalRecords = () => {
-  const { data: mdicalRecords, isLoading } = useQuery({
-    queryKey: ["medical-records"],
-    queryFn: getMedicalRecords,
-    staleTime: 10000,
+  const params = useParams()
+  const patient_id = params?.id
+  const dynamicKey = patient_id ? `medical-records/patients/${patient_id}` : 'medical-records';
+
+  const { data: medicalRecords, isLoading } = useQuery({
+    queryKey: [dynamicKey],
+    queryFn: ({signal}) => getMedicalRecords({patient_id, signal}),
+    staleTime: 5000,
+    cacheTime: dynamicKey ? 10000 : 86400 * 1000
   });
   return (
     <>
       {isLoading && <Loader />}
-      <Datatable list={mdicalRecords} name="Medical Records" column={medicalRecordColumns} />
+      <Datatable list={medicalRecords} name="Medical Records" column={medicalRecordColumns} />
     </>
   );
 };

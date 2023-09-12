@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Input from "./Input";
+import Input from "../Input";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { ILogin } from "@/app/interfaces/login.interface";

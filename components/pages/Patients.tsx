@@ -2,7 +2,7 @@
 import { getPatients } from "@/app/store/api/patients";
 import { useQuery } from "@tanstack/react-query";
 import Datatable from "@/components/datatable/Datatable";
-import Loader from "@/components/Loader";
+import Loader from "@/components/ui/Loader";
 import { patientColumns } from "../datatable/dataSource";
 
 const Patients = () => {

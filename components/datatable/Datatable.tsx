@@ -10,6 +10,7 @@ import SimpleDialog from "@/components/Modal";
 import Profile from "../Profile";
 import MedicalRecord from "../MedicalRecord";
 import { useRouter } from "next/navigation";
+import { useHmsStore } from "@/app/store";
 
 interface IDatatableProps {
   list: any;
@@ -27,6 +28,7 @@ const Datatable = ({ list = [], column = [], name }: IDatatableProps) => {
   const handler = (event: any, row: any) => {
     if(event.target.name === 'records') {
       const redirect = `/medical-records/patients/${row.patient_id._id}`;
+      useHmsStore.setState({medicalRecord: row})
       router.push(redirect)
       return
     }

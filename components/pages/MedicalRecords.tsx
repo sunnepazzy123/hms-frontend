@@ -19,6 +19,8 @@ const MedicalRecords = () => {
   });
   return (
     <>
+  
+      <h2 className="text-center text-xl text-black bold">{patient_id ? 'Patient Records' : 'Medical Records'}</h2>
       {isLoading && <Loader />}
       <Datatable list={medicalRecords} name="Medical Records" column={medicalRecordColumns} />
     </>

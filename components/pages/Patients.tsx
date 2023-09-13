@@ -13,6 +13,7 @@ const Patients = () => {
   });
   return (
     <>
+      
       {isLoading && <Loader />}
       <Datatable list={patients} name="Patients" column={patientColumns} routePath={patients ? patients[0]._id : null}/>
     </>

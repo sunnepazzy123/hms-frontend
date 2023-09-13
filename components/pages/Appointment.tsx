@@ -14,7 +14,6 @@ const Appointments = () => {
   });
   return (
     <>
-    <h2 className="text-center text-xl text-black bold">Appointments</h2>
       {isLoading && <Loader />}
       <Datatable list={appointments} name="Appointment Records" column={medicalRecordColumns} />
     </>

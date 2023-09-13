@@ -1,12 +1,12 @@
-import MedicalRecords from '@/components/pages/MedicalRecords'
-import React from 'react'
+import MedicalRecords from "@/components/pages/MedicalRecords";
+import React from "react";
 
 const Page = () => {
   return (
-   <>
-   <MedicalRecords />
-   </>
-  )
-}
+    <>
+      <MedicalRecords />
+    </>
+  );
+};
 
-export default Page
+export default Page;

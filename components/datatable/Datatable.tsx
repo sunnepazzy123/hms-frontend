@@ -71,6 +71,7 @@ const Datatable = ({
               className="recordButton"
               name="records"
               onClick={(e) => handler(e, params.row)}
+              //@ts-ignore
               disabled={routePath && pathName !== "/patients"}
             >
               Records

@@ -15,7 +15,7 @@ const Appointments = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <Datatable list={appointments} name="Appointment Records" column={medicalRecordColumns} />
+      <Datatable list={appointments} name="Appointment Records" column={medicalRecordColumns} routePath={null} />
     </>
   );
 };

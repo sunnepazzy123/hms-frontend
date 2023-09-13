@@ -9,7 +9,7 @@ import { useHmsStore } from "@/app/store";
 
 const MedicalRecords = () => {
   const params = useParams();
-  const patient_id = params?.id;
+  const patient_id = params?.id as string;
   const dynamicKey = patient_id
     ? `medical-records/patients/${patient_id}`
     : "medical-records";

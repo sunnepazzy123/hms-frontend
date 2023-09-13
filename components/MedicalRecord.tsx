@@ -24,6 +24,9 @@ const MedicalRecord = ({medicalRecord = {}}: any) => {
         <p className="text-center">{medicalRecord.card_no}</p>
         <div className="grid grid-flow-row w-full text-left">
           <Input register={register} name='diagnosis' />
+          <Input register={register} name='status' />
+ 
+
         </div>
         <div className="card-actions">
           <button className="btn btn-primary btn-sm">Update</button>

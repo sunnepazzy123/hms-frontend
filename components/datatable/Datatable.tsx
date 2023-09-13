@@ -9,7 +9,7 @@ import { renderCellFormatDate } from "./dataSource";
 import SimpleDialog from "@/components/Modal";
 import Profile from "../Profile";
 import MedicalRecord from "../MedicalRecord";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useHmsStore } from "@/app/store";
 
 interface IDatatableProps {
@@ -20,20 +20,28 @@ interface IDatatableProps {
   handlerOption?: (row: any, name: string) => void;
 }
 
-const Datatable = ({ list = [], column = [], name, routePath=null }: IDatatableProps) => {
+const Datatable = ({
+  list = [],
+  column = [],
+  name,
+  routePath = null,
+}: IDatatableProps) => {
   const segmentName = name === "Medical Records" ? "medical-records" : name;
+  const pathName = usePathname();
+  const router = useRouter();
+  const record = useHmsStore((state: any) => state.medicalRecord);
 
   const [open, setOpen] = useState(false);
-  const router = useRouter();
-  const record = useHmsStore((state: any) => state.medicalRecord)
 
   const handler = (event: any, row: any) => {
-    if(event.target.name === 'records') {
-      if(routePath) return
-      const redirect = `/medical-records/patients/${row.patient_id._id}`;
-      useHmsStore.setState({medicalRecord: row})
-      router.push(redirect)
-      return
+    useHmsStore.setState({ medicalRecord: row });
+    if (event.target.name === "records") {
+      if (routePath && pathName !== "/patients") return;
+      const redirect = `/medical-records/patients/${
+        routePath || row.patient_id._id
+      }`;
+      router.push(redirect);
+      return;
     }
     setOpen(true);
   };
@@ -63,8 +71,7 @@ const Datatable = ({ list = [], column = [], name, routePath=null }: IDatatableP
               className="recordButton"
               name="records"
               onClick={(e) => handler(e, params.row)}
-              disabled={routePath}
-
+              disabled={routePath && pathName !== "/patients"}
             >
               Records
             </button>

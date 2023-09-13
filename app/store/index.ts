@@ -7,7 +7,14 @@ export const useHmsStore = create((set) => ({
   id: null,
   medicalRecord: {} as IMedicalRecords,
   openSideNav: () => set((state: any) => ({sideNav: !state.sideNav})),
-  setId: (id: string|null) => set((state: any) => ({id: id}))
+  setId: (id: string|null) => set((state: any) => ({id: id})),
+  setRecordState: (newState: any) => {
+    // Save state to sessionStorage whenever it changes
+    set((state: any) => {
+      sessionStorage.setItem('recordState', JSON.stringify(newState));
+      return newState;
+    });
+  },
 }))
 
 
